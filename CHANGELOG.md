@@ -1,4 +1,5 @@
-## [1.0.0] - 2025-08-01
-- Initial release of `blurred_overlay`.
-- Support for blurred dialogs and modal bottom sheets.
-- Customizable shadow, border radius, and padding.
+## [1.0.1] - 2025-08-02
+
+- Added Demo Screenshot.
+- Added handle in the bottom sheet.
+- Added usage example code.

@@ -11,6 +11,12 @@ Future<T?> showBlurredModalBottomSheet<T>({
   double? minHeight,
   EdgeInsetsGeometry? margin,
   EdgeInsetsGeometry? padding,
+  bool showHandle = false,
+  EdgeInsetsGeometry? handleMargin,
+  BorderRadiusGeometry? handleRadius,
+  Color? handleColor,
+  double? handleHeight,
+  double? handleWidth,
 }) {
   return showModalBottomSheet<T>(
     context: context,
@@ -51,7 +57,31 @@ Future<T?> showBlurredModalBottomSheet<T>({
                   ),
                 ],
               ),
-              child: SafeArea(top: false, child: builder(context)),
+              child: SafeArea(
+                  top: false,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Visibility(
+                        visible: showHandle,
+                        child: Align(
+                          alignment: Alignment.topCenter,
+                          child: Container(
+                            width: handleWidth ?? 40,
+                            height: handleHeight ?? 5,
+                            margin: handleMargin ??
+                                const EdgeInsets.only(bottom: 12.0),
+                            decoration: BoxDecoration(
+                              color: handleColor ?? Colors.grey[600],
+                              borderRadius:
+                                  handleRadius ?? BorderRadius.circular(10),
+                            ),
+                          ),
+                        ),
+                      ),
+                      builder(context),
+                    ],
+                  )),
             ),
           ),
         ],
