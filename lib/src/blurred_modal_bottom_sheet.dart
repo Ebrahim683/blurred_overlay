@@ -1,8 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-
-
 /// Shows a modal bottom sheet with a blurred background and customizable UI.
 Future<T?> showBlurredModalBottomSheet<T>({
   required BuildContext context,
@@ -40,7 +38,7 @@ Future<T?> showBlurredModalBottomSheet<T>({
               width: MediaQuery.sizeOf(context).width,
               constraints: BoxConstraints(
                 minHeight: minHeight ?? 100,
-                maxHeight: MediaQuery.of(context).size.height * 0.9,
+                maxHeight: MediaQuery.sizeOf(context).height * 0.8,
               ),
               decoration: BoxDecoration(
                 color: Colors.white,

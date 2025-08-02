@@ -1,8 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-
-
 /// Shows a blurred dialog with optional custom background and blur settings.
 Future<T?> showBlurredDialog<T>({
   required BuildContext context,
