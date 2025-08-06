@@ -6,21 +6,21 @@ A lightweight Flutter package to show beautiful blurred dialogs and modal bottom
 ## ✨ Features
 
 - Blur effect using `BackdropFilter`
-- Customizable border radius, padding, margin
+- Customizable border radius, padding, and margin
 - Optional box shadow
 - Works with both dialogs and bottom sheets
 
   
 ## 🖼️ Screenshots
 
-<table>
+<table border="0">
   <tr>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/Ebrahim683/blurred_overlay/main/images/bottom_sheet.png" width="300"/><br/>
+      <img src="https://i.ibb.co.com/3y7cSJKg/bottom-sheet.jpg" alt="bottom-sheet" border="0" width="300"/><br/>
       <sub><b>Blurred BottomSheet</b></sub>
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/Ebrahim683/blurred_overlay/main/images/dialog.png" width="300"/><br/>
+      <img src="https://i.ibb.co.com/ZzhMK0jy/dialog.jpg" alt="dialog" border="0" width="300"/><br/>
       <sub><b>Blurred Dialog</b></sub>
     </td>
   </tr>
