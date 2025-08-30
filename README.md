@@ -5,10 +5,14 @@ A lightweight Flutter package to show beautiful blurred dialogs and modal bottom
 
 ## ✨ Features
 
-- Blur effect using `BackdropFilter`
-- Customizable border radius, padding, and margin
-- Optional box shadow
-- Works with both dialogs and bottom sheets
+- 🎯 Blur effect using `BackdropFilter` with customizable blur intensity
+- 🎨 Fully customizable design (colors, radius, padding, margins, shadows)
+- 📱 Drag-to-dismiss support with optional handle indicator
+- 🔧 Advanced parameters (maxHeight, enableDrag, useSafeArea, barrierColor)
+- ⚡ Optimized for both debug and release modes (no artifacts)
+- 🎭 Theme-aware with automatic color fallbacks
+- 📐 Smart layout system that adapts to content size
+- 🚀 Works with both dialogs and bottom sheets
 
   
 ## 🖼️ Screenshots
@@ -33,7 +37,7 @@ Installation
 Add dependency into your pubspec.yaml
 ```yaml
 dependencies:
-  blurred_overlay: ^1.0.0
+  blurred_overlay: ^1.0.3
 ```
 Then run
 ```shell
