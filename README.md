@@ -42,7 +42,7 @@ A lightweight Flutter package to show beautiful blurred dialogs, modal bottom sh
 Add dependency into your pubspec.yaml
 ```yaml
 dependencies:
-  blurred_overlay: ^1.0.3
+  blurred_overlay: ^1.1.0
 ```
 Then run
 ```shell
