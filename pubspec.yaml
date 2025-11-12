@@ -1,6 +1,6 @@
 name: blurred_overlay
-description: A lightweight Flutter package to show blurred dialogs and bottom sheets with shadow and radius.
-version: 1.0.3
+description: A lightweight Flutter package to show blurred dialogs, bottom sheets, and drawers with shadow and radius.
+version: 1.1.0
 homepage: https://github.com/Ebrahim683/blurred_overlay
 repository: https://github.com/Ebrahim683/blurred_overlay
 issue_tracker: https://github.com/Ebrahim683/blurred_overlay/issues
