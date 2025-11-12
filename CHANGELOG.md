@@ -1,3 +1,12 @@
+## [1.1.0] - TBD
+
+- **Added:** New `BlurredDrawer` widget for creating blurred navigation drawers
+- **Added:** Support for both left and right drawer positions via `DrawerPosition` enum
+- **Added:** Customizable drawer parameters (blurSigma, width, backgroundColor, elevation, shadowColor, borderRadius)
+- **Added:** Theme-aware drawer with automatic color fallbacks
+- **Enhanced:** Updated example app to demonstrate BlurredDrawer usage
+- **Fixed:** Typo in README documentation
+
 ## [1.0.3] - 2025-08-30
 
 - **Fixed:** Resolved yellow line artifact appearing in release mode by restructuring widget hierarchy

@@ -30,7 +30,7 @@ Future<T?> showBlurredModalBottomSheet<T>({
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
     elevation: 0,
-    barrierColor: barrierColor ?? Colors.white.withOpacity(0.0),
+    barrierColor: barrierColor ?? Colors.white.withValues(alpha: 0.0),
     builder: (context) {
       final mediaQuery = MediaQuery.of(context);
       final defaultMaxHeight = maxHeight ?? mediaQuery.size.height * 0.9;
@@ -56,19 +56,19 @@ Future<T?> showBlurredModalBottomSheet<T>({
                   borderRadius: borderRadius ?? const BorderRadius.vertical(top: Radius.circular(20)),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Colors.black.withValues(alpha: 0.1),
                       blurRadius: 8,
                       spreadRadius: -2,
                       offset: const Offset(0, -4),
                     ),
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Colors.black.withValues(alpha: 0.1),
                       blurRadius: 8,
                       spreadRadius: -2,
                       offset: const Offset(-4, 0),
                     ),
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Colors.black.withValues(alpha: 0.1),
                       blurRadius: 8,
                       spreadRadius: -2,
                       offset: const Offset(4, 0),

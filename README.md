@@ -1,6 +1,6 @@
 # blurred_overlay
 
-A lightweight Flutter package to show beautiful blurred dialogs and modal bottom sheets with shadow, radius, and customization.
+A lightweight Flutter package to show beautiful blurred dialogs, modal bottom sheets, and drawers with shadow, radius, and customization.
 
 
 ## ✨ Features
@@ -12,7 +12,7 @@ A lightweight Flutter package to show beautiful blurred dialogs and modal bottom
 - ⚡ Optimized for both debug and release modes (no artifacts)
 - 🎭 Theme-aware with automatic color fallbacks
 - 📐 Smart layout system that adapts to content size
-- 🚀 Works with both dialogs and bottom sheets
+- 🚀 Works with dialogs, bottom sheets, and drawers (both left and right)
 
   
 ## 🖼️ Screenshots
@@ -27,12 +27,17 @@ A lightweight Flutter package to show beautiful blurred dialogs and modal bottom
       <img src="https://i.ibb.co.com/ZzhMK0jy/dialog.jpg" alt="dialog" border="0" width="300"/><br/>
       <sub><b>Blurred Dialog</b></sub>
     </td>
+    <td align="center">
+      <img src="https://i.ibb.co.com/TxgkhtwW/blurred-drawer.png" alt="blurred-drawer" border="0" width="300"/><br/>
+      <sub><b>Blurred Drawer</b></sub>
+    </td>
   </tr>
 </table>
 
 
 ## 🚀 Quick Start
-Installation
+
+### Installation
 
 Add dependency into your pubspec.yaml
 ```yaml
@@ -50,7 +55,8 @@ flutter pub add blurred_overlay
 ```
 
 ## 📱 Basic Usage
-Blurred BottomSheet
+
+### Blurred BottomSheet
 ```dart
 showBlurredModalBottomSheet(
   context: context,
@@ -101,7 +107,7 @@ showBlurredModalBottomSheet(
 );
 ```
 
-Bludder Dialog
+### Blurred Dialog
 ```dart
 showBlurredDialog(
       context: context,
@@ -141,4 +147,75 @@ showBlurredDialog(
         );
       },
     );
+```
+
+### Blurred Drawer
+
+**Left Drawer:**
+```dart
+Scaffold(
+  drawer: BlurredDrawer(
+    child: ListView(
+      padding: EdgeInsets.zero,
+      children: [
+        DrawerHeader(
+          decoration: BoxDecoration(
+            color: Colors.blue.withOpacity(0.3),
+          ),
+          child: const Text(
+            'Menu',
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          ),
+        ),
+        ListTile(
+          leading: const Icon(Icons.home),
+          title: const Text('Home'),
+          onTap: () => Navigator.pop(context),
+        ),
+        ListTile(
+          leading: const Icon(Icons.settings),
+          title: const Text('Settings'),
+          onTap: () => Navigator.pop(context),
+        ),
+      ],
+    ),
+  ),
+  appBar: AppBar(title: const Text('App')),
+  body: const Center(child: Text('Swipe from left')),
+)
+```
+
+**Right Drawer:**
+```dart
+Scaffold(
+  endDrawer: BlurredDrawer(
+    position: DrawerPosition.right,
+    child: ListView(
+      padding: EdgeInsets.zero,
+      children: [
+        DrawerHeader(
+          decoration: BoxDecoration(
+            color: Colors.purple.withOpacity(0.3),
+          ),
+          child: const Text(
+            'Options',
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          ),
+        ),
+        ListTile(
+          leading: const Icon(Icons.notifications),
+          title: const Text('Notifications'),
+          onTap: () => Navigator.pop(context),
+        ),
+        ListTile(
+          leading: const Icon(Icons.account_circle),
+          title: const Text('Profile'),
+          onTap: () => Navigator.pop(context),
+        ),
+      ],
+    ),
+  ),
+  appBar: AppBar(title: const Text('App')),
+  body: const Center(child: Text('Swipe from right')),
+)
 ```

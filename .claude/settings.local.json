@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(flutter analyze:*)",
+      "WebFetch(domain:ibb.co.com)",
+      "Bash(flutter pub get:*)",
+      "Bash(flutter pub publish:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
