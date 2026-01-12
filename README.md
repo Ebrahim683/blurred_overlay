@@ -2,7 +2,6 @@
 
 A lightweight Flutter package to show beautiful blurred dialogs, modal bottom sheets, and drawers with shadow, radius, and customization.
 
-
 ## ✨ Features
 
 - 🎯 Blur effect using `BackdropFilter` with customizable blur intensity
@@ -14,7 +13,6 @@ A lightweight Flutter package to show beautiful blurred dialogs, modal bottom sh
 - 📐 Smart layout system that adapts to content size
 - 🚀 Works with dialogs, bottom sheets, and drawers (both left and right)
 
-  
 ## 🖼️ Screenshots
 
 <table border="0">
@@ -32,24 +30,37 @@ A lightweight Flutter package to show beautiful blurred dialogs, modal bottom sh
       <sub><b>Blurred Drawer</b></sub>
     </td>
   </tr>
+  <tr>
+    <td align="center">
+      <img src="https://i.ibb.co.com/fVkBsbFD/blurred-loading-overlay.gif" alt="blurred-loading-overlay" border="0" width="300"/><br/>
+      <sub><b>Blurred Loading Overlay</b></sub>
+    </td>
+    <td align="center">
+      <img src="https://i.ibb.co.com/rfbT9YhT/blurred-progress-loading-overlay.gif" alt="blurred-progress-loading-overlay" border="0" width="300"/><br/>
+      <sub><b>Progress Loading Overlay</b></sub>
+    </td>
+  </tr>
 </table>
-
 
 ## 🚀 Quick Start
 
 ### Installation
 
 Add dependency into your pubspec.yaml
+
 ```yaml
 dependencies:
-  blurred_overlay: ^1.1.0
+  blurred_overlay: latest
 ```
+
 Then run
+
 ```shell
 flutter pub get
 ```
 
 Or use the command line
+
 ```shell
 flutter pub add blurred_overlay
 ```
@@ -57,6 +68,7 @@ flutter pub add blurred_overlay
 ## 📱 Basic Usage
 
 ### Blurred BottomSheet
+
 ```dart
 showBlurredModalBottomSheet(
   context: context,
@@ -108,6 +120,7 @@ showBlurredModalBottomSheet(
 ```
 
 ### Blurred Dialog
+
 ```dart
 showBlurredDialog(
       context: context,
@@ -152,6 +165,7 @@ showBlurredDialog(
 ### Blurred Drawer
 
 **Left Drawer:**
+
 ```dart
 Scaffold(
   drawer: BlurredDrawer(
@@ -186,6 +200,7 @@ Scaffold(
 ```
 
 **Right Drawer:**
+
 ```dart
 Scaffold(
   endDrawer: BlurredDrawer(
@@ -217,5 +232,92 @@ Scaffold(
   ),
   appBar: AppBar(title: const Text('App')),
   body: const Center(child: Text('Swipe from right')),
+)
+```
+
+### Blurred Loading Overlay
+
+**Basic Usage (Default Cupertino Style):**
+
+```dart
+BlurredLoadingOverlay(
+  isLoading: _isLoading,
+  child: YourContentWidget(),
+)
+```
+
+**With Different Loading Styles:**
+
+```dart
+BlurredLoadingOverlay(
+  isLoading: _isLoading,
+  loadingStyle: LoadingStyle.pulseRing, // 20 styles available
+  loadingColor: Colors.blue,
+  loadingSize: 60.0,
+  child: YourContentWidget(),
+)
+```
+
+**With Custom Loading Widget:**
+
+```dart
+BlurredLoadingOverlay(
+  isLoading: _isLoading,
+  customLoadingWidget: CircularProgressIndicator(),
+  child: YourContentWidget(),
+)
+```
+
+**With Header and Footer:**
+
+```dart
+BlurredLoadingOverlay(
+  isLoading: _isLoading,
+  loadingStyle: LoadingStyle.breathingCircle,
+  headerWidget: Text('Loading...', style: TextStyle(color: Colors.white)),
+  footerWidget: Text('Please wait', style: TextStyle(color: Colors.white70)),
+  child: YourContentWidget(),
+)
+```
+
+**Available Loading Styles:**
+
+- `cupertinoBox` (default) - iOS-style spinner in a box
+- `bouncingLineCircle/Square` - Bouncing shapes
+- `bouncingGridCircle/Square` - 3x3 grid bounce
+- `bumpingLineCircle/Square` - Horizontal bump
+- `fadingLineCircle/Square` - Sequential fade
+- `jumpingLineCircle/Square` - Vertical jump
+- `rotatingSquare` - Rotating shape
+- `flippingCircle/Square` - Horizontal flip
+- `doubleFlippingCircle/Square` - 3D flip effect
+- `fillingSquare` - Fill and rotate
+- `pulseRing` - Expanding rings
+- `orbitDots` - Orbiting dots
+- `breathingCircle` - Expanding/contracting circle
+
+### Blurred Progress Loading
+
+**Circle Progress:**
+
+```dart
+BlurredLoadingPercentage(
+  isLoading: _isLoading,
+  progress: _progressValue, // 0.0 to 100.0
+  progressStyle: ProgressStyle.circle,
+  child: YourContentWidget(),
+)
+```
+
+**Line Progress:**
+
+```dart
+BlurredLoadingPercentage(
+  isLoading: _isLoading,
+  progress: _progressValue,
+  progressStyle: ProgressStyle.line,
+  progressColor: Colors.green,
+  trackColor: Colors.white24,
+  child: YourContentWidget(),
 )
 ```

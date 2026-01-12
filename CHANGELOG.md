@@ -1,3 +1,26 @@
+## [1.2.0] - 2026-01-12
+
+- **Added:** New `BlurredLoadingOverlay` widget for displaying loading states with blur effect
+- **Added:** New `BlurredLoadingPercentage` widget for progress-based loading with percentage display
+- **Added:** 20 loading styles available via `LoadingStyle` enum:
+  - `bouncingLineCircle/Square` - Three shapes bouncing smoothly
+  - `bouncingGridCircle/Square` - 3x3 grid with diagonal bounce effect
+  - `bumpingLineCircle/Square` - Three shapes with horizontal bump motion
+  - `fadingLineCircle/Square` - Three shapes with sequential fade effect
+  - `jumpingLineCircle/Square` - Three shapes jumping vertically
+  - `rotatingSquare` - Single shape rotating 360 degrees
+  - `flippingCircle/Square` - Single shape flipping horizontally 3 times
+  - `doubleFlippingCircle/Square` - Shape flipping on X then Y axis
+  - `fillingSquare` - Shape that fills and rotates while unfilling
+  - `cupertinoBox` - iOS-style spinner in centered semi-transparent box (default)
+  - `pulseRing` - Concentric rings expanding outward with fading opacity
+  - `orbitDots` - Multiple dots orbiting around a center point
+  - `breathingCircle` - Circle that smoothly expands and contracts
+- **Added:** `customLoadingWidget` parameter for fully custom loading indicators
+- **Added:** Header and footer widget slots for loading overlays
+- **Added:** Line and circle progress styles for percentage-based loading
+- **Enhanced:** Simplified API with `LoadingStyle` enum for easy animation selection
+
 ## [1.1.0] - 2025-11-12
 
 - **Added:** New `BlurredDrawer` widget for creating blurred navigation drawers
