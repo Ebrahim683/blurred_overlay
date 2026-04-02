@@ -1,3 +1,8 @@
+## [1.2.1] - 02-04-2026
+
+- **Changed:** Default loading style from `cupertinoBox` to `pulseRing`
+- **Updated:** Flutter minimum version constraint for broader compatibility
+
 ## [1.2.0] - 2026-01-12
 
 - **Added:** New `BlurredLoadingOverlay` widget for displaying loading states with blur effect

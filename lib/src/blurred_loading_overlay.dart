@@ -110,7 +110,7 @@ class BlurredLoadingOverlay extends StatelessWidget {
     super.key,
     required this.isLoading,
     required this.child,
-    this.loadingStyle = LoadingStyle.cupertinoBox,
+    this.loadingStyle = LoadingStyle.pulseRing,
     this.customLoadingWidget,
     this.blurSigma = 4.0,
     this.backgroundColor,

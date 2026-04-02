@@ -4,7 +4,8 @@
       "Bash(flutter analyze:*)",
       "WebFetch(domain:ibb.co.com)",
       "Bash(flutter pub get:*)",
-      "Bash(flutter pub publish:*)"
+      "Bash(flutter pub publish:*)",
+      "Bash(flutter --version)"
     ],
     "deny": [],
     "ask": []
