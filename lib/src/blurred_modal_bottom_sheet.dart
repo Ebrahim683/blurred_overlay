@@ -22,6 +22,16 @@ Future<T?> showBlurredModalBottomSheet<T>({
   Color? handleColor,
   double? handleHeight,
   double? handleWidth,
+  ShapeBorder? shape,
+  String? barrierLabel,
+  bool useRootNavigator = false,
+  BoxConstraints? constraints,
+  Clip? clipBehavior,
+  RouteSettings? routeSettings,
+  AnimationStyle? sheetAnimationStyle,
+  AnimationController? transitionAnimationController,
+  Offset? anchorPoint,
+  bool requestFocus = true,
 }) {
   return showModalBottomSheet<T>(
     context: context,
@@ -30,83 +40,141 @@ Future<T?> showBlurredModalBottomSheet<T>({
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
     elevation: 0,
-    barrierColor: barrierColor ?? Colors.white.withValues(alpha: 0.0),
+    useSafeArea: useSafeArea,
+    barrierColor: barrierColor ?? Colors.transparent,
+    shape: shape,
+    barrierLabel: barrierLabel,
+    useRootNavigator: useRootNavigator,
+    constraints: constraints,
+    clipBehavior: clipBehavior,
+    routeSettings: routeSettings,
+    showDragHandle: showHandle,
+    sheetAnimationStyle: sheetAnimationStyle,
+    transitionAnimationController: transitionAnimationController,
+    anchorPoint: anchorPoint,
+    requestFocus: requestFocus,
     builder: (context) {
       final mediaQuery = MediaQuery.of(context);
       final defaultMaxHeight = maxHeight ?? mediaQuery.size.height * 0.9;
-      
-      return BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: blurSigma, sigmaY: blurSigma),
+
+      return useSafeArea
+          ? SafeArea(
+              child: _body(
+                  blurSigma,
+                  isDismissible,
+                  context,
+                  margin,
+                  minHeight,
+                  defaultMaxHeight,
+                  mediaQuery,
+                  backgroundColor,
+                  borderRadius,
+                  showHandle,
+                  handleWidth,
+                  handleHeight,
+                  handleMargin,
+                  handleColor,
+                  handleRadius,
+                  padding,
+                  builder),
+            )
+          : _body(
+              blurSigma,
+              isDismissible,
+              context,
+              margin,
+              minHeight,
+              defaultMaxHeight,
+              mediaQuery,
+              backgroundColor,
+              borderRadius,
+              showHandle,
+              handleWidth,
+              handleHeight,
+              handleMargin,
+              handleColor,
+              handleRadius,
+              padding,
+              builder);
+    },
+  );
+}
+
+BackdropFilter _body(
+    double blurSigma,
+    bool isDismissible,
+    BuildContext context,
+    EdgeInsetsGeometry? margin,
+    double? minHeight,
+    double defaultMaxHeight,
+    MediaQueryData mediaQuery,
+    Color? backgroundColor,
+    BorderRadius? borderRadius,
+    bool showHandle,
+    double? handleWidth,
+    double? handleHeight,
+    EdgeInsetsGeometry? handleMargin,
+    Color? handleColor,
+    BorderRadiusGeometry? handleRadius,
+    EdgeInsetsGeometry? padding,
+    WidgetBuilder builder) {
+  return BackdropFilter(
+    filter: ImageFilter.blur(sigmaX: blurSigma, sigmaY: blurSigma),
+    child: GestureDetector(
+      onTap: isDismissible ? () => Navigator.of(context).pop() : null,
+      behavior: HitTestBehavior.translucent,
+      child: Align(
+        alignment: Alignment.bottomCenter,
         child: GestureDetector(
-          onTap: isDismissible ? () => Navigator.of(context).pop() : null,
-          behavior: HitTestBehavior.translucent,
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: GestureDetector(
-              onTap: () {}, // Prevent tap from bubbling up
-              child: Container(
-                margin: margin ?? const EdgeInsets.symmetric(horizontal: 10),
-                constraints: BoxConstraints(
-                  minHeight: minHeight ?? 0,
-                  maxHeight: defaultMaxHeight,
-                  maxWidth: mediaQuery.size.width - ((margin?.horizontal ?? 20)),
+          onTap: () {}, // Prevent tap from bubbling up
+          child: Container(
+            margin: margin ?? const EdgeInsets.symmetric(horizontal: 10),
+            constraints: BoxConstraints(
+              minHeight: minHeight ?? 0,
+              maxHeight: defaultMaxHeight,
+              maxWidth: mediaQuery.size.width - ((margin?.horizontal ?? 20)),
+            ),
+            decoration: BoxDecoration(
+              color: backgroundColor ??
+                  Theme.of(context).bottomSheetTheme.backgroundColor ??
+                  Theme.of(context).colorScheme.surface,
+              borderRadius: borderRadius ??
+                  const BorderRadius.vertical(top: Radius.circular(20)),
+              boxShadow: [
+                BoxShadow(
+                  color: Theme.of(context).shadowColor.withValues(alpha: 0.1),
+                  blurRadius: 8,
+                  spreadRadius: -2,
+                  offset: const Offset(0, -4),
                 ),
-                decoration: BoxDecoration(
-                  color: backgroundColor ?? Theme.of(context).bottomSheetTheme.backgroundColor ?? Colors.white,
-                  borderRadius: borderRadius ?? const BorderRadius.vertical(top: Radius.circular(20)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.1),
-                      blurRadius: 8,
-                      spreadRadius: -2,
-                      offset: const Offset(0, -4),
-                    ),
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.1),
-                      blurRadius: 8,
-                      spreadRadius: -2,
-                      offset: const Offset(-4, 0),
-                    ),
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.1),
-                      blurRadius: 8,
-                      spreadRadius: -2,
-                      offset: const Offset(4, 0),
-                    ),
-                  ],
+                BoxShadow(
+                  color: Theme.of(context).shadowColor.withValues(alpha: 0.1),
+                  blurRadius: 8,
+                  spreadRadius: -2,
+                  offset: const Offset(-4, 0),
                 ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    if (showHandle) ...[
-                      Container(
-                        width: handleWidth ?? 40,
-                        height: handleHeight ?? 4,
-                        margin: handleMargin ?? const EdgeInsets.only(top: 12.0, bottom: 8.0),
-                        decoration: BoxDecoration(
-                          color: handleColor ?? Colors.grey[400],
-                          borderRadius: handleRadius ?? BorderRadius.circular(10),
-                        ),
-                      ),
-                    ],
-                    Flexible(
-                      child: Container(
-                        padding: padding ?? const EdgeInsets.all(16),
-                        child: useSafeArea
-                            ? SafeArea(
-                                top: false,
-                                child: builder(context),
-                              )
-                            : builder(context),
-                      ),
-                    ),
-                  ],
+                BoxShadow(
+                  color: Theme.of(context).shadowColor.withValues(alpha: 0.1),
+                  blurRadius: 8,
+                  spreadRadius: -2,
+                  offset: const Offset(4, 0),
                 ),
-              ),
+              ],
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Expanded(
+                  child: Container(
+                    padding: padding ?? const EdgeInsets.all(16),
+                    child: builder(context),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
-      );
-    },
+      ),
+    ),
   );
 }

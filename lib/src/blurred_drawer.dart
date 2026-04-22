@@ -85,7 +85,7 @@ class BlurredDrawer extends StatelessWidget {
 
     // Determine shadow color
     final effectiveShadowColor =
-        shadowColor ?? Colors.black.withValues(alpha: 0.2);
+        shadowColor ?? theme.shadowColor.withValues(alpha: 0.2);
 
     // Border radius - only apply to the open edge
     final effectiveBorderRadius = borderRadius ??

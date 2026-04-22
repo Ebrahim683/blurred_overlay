@@ -1,3 +1,7 @@
+## [1.2.2] - 22-04-2026
+
+- **Updated:** Dark and Light mode support
+
 ## [1.2.1] - 02-04-2026
 
 - **Changed:** Default loading style from `cupertinoBox` to `pulseRing`
