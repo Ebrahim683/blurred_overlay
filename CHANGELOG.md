@@ -1,3 +1,7 @@
+## [1.2.3] - 24-04-2026
+
+- **Fixed:** Height issue fixed
+
 ## [1.2.2] - 22-04-2026
 
 - **Updated:** Dark and Light mode support

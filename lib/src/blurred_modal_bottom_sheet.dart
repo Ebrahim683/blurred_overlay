@@ -48,7 +48,7 @@ Future<T?> showBlurredModalBottomSheet<T>({
     constraints: constraints,
     clipBehavior: clipBehavior,
     routeSettings: routeSettings,
-    showDragHandle: showHandle,
+    showDragHandle: false,
     sheetAnimationStyle: sheetAnimationStyle,
     transitionAnimationController: transitionAnimationController,
     anchorPoint: anchorPoint,
@@ -164,10 +164,23 @@ BackdropFilter _body(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Expanded(
-                  child: Container(
-                    padding: padding ?? const EdgeInsets.all(16),
-                    child: builder(context),
+                if (showHandle)
+                  Container(
+                    margin: handleMargin ?? const EdgeInsets.only(top: 10),
+                    width: handleWidth ?? 40,
+                    height: handleHeight ?? 4,
+                    decoration: BoxDecoration(
+                      color: handleColor ??
+                          Theme.of(context).dividerColor.withValues(alpha: 0.5),
+                      borderRadius: handleRadius ?? BorderRadius.circular(2),
+                    ),
+                  ),
+                Flexible(
+                  child: SingleChildScrollView(
+                    child: Container(
+                      padding: padding ?? const EdgeInsets.all(16),
+                      child: builder(context),
+                    ),
                   ),
                 ),
               ],

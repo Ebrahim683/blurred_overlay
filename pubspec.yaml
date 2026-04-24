@@ -1,6 +1,6 @@
 name: blurred_overlay
 description: A lightweight Flutter package to show blurred dialogs, bottom sheets, drawers, and loading overlays with animations.
-version: 1.2.2
+version: 1.2.3
 homepage: https://github.com/Ebrahim683/blurred_overlay
 repository: https://github.com/Ebrahim683/blurred_overlay
 issue_tracker: https://github.com/Ebrahim683/blurred_overlay/issues
